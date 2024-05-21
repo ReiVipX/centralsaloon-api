@@ -1,17 +1,17 @@
 const express = require('express');
 const { Pool } = require('pg');
-const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
 
 // Configuração do pool de conexões com o banco de dados PostgreSQL
 const pool = new Pool({
-  user: 'tests_uni9_2024_user',
-  password: 'MxPmVoOANH0ZiqM2tnCsVzQcMVFDMHlO',
-  host: 'dpg-comkt1gcmk4c739nk18g-a.virginia-postgres.render.com',
-  port: 5432,
-  database: 'tests_uni9_2024',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
   ssl: {
     rejectUnauthorized: false // Necessário se estiver usando SSL
   }
