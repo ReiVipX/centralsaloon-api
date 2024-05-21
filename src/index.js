@@ -20,6 +20,10 @@ const pool = new Pool({
 // Middleware para permitir o uso de JSON
 app.use(express.json());
 
+app.get('/healthz', async (req, res) => {
+  res.status(200).send("Tudo funcionando");
+});
+
 // Rota POST para conectar no aplicativo
 app.post('/login', async (req, res) => {
   let client
