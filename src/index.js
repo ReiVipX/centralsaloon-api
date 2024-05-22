@@ -43,10 +43,11 @@ app.post('/login', async (req, res) => {
     const password_db = userResult.rows[0].senha;
 
     if (email == email_db && senha == password_db) {
-      res.statusCode = 200; // Define o status code para 200 (OK)
+      res.send(true);
     } else {
-      res.statusCode = 400; // Define o status code para 400 (Bad Request)
+      res.send(false);
     }
+
   } catch (error) {
     console.error('Erro ao realizar login no banco de dados:', error);
     res.status(500).json({ error: 'Erro ao realizar login no banco de dados.' });
