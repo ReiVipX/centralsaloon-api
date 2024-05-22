@@ -43,9 +43,9 @@ app.post('/login', async (req, res) => {
     const password_db = userResult.rows[0].senha;
 
     if (email == email_db && senha == password_db) {
-      res.send('Login bem sucedido');
+      res.statusCode(200);
     } else {
-      res.send('Erro no login');
+      res.statusCode(400);
     }
   } catch (error) {
     console.error('Erro ao realizar login no banco de dados:', error);
@@ -84,7 +84,7 @@ app.get('/clientes', async (req, res) => {
   }
 });
 
-// Rota GET para buscar usuários no banco de dados
+// Rota GET para buscar agendamentos no banco de dados
 app.get('/agenda', async (req, res) => {
   let client;
   try {
